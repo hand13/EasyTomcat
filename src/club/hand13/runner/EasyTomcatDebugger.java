@@ -1,4 +1,4 @@
-package com.hand13.runner;
+package club.hand13.runner;
 
 import club.hand13.cfg.EasyTomcatRunConfiguration;
 import com.intellij.debugger.impl.GenericDebuggerRunner;

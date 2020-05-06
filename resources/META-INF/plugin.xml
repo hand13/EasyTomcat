@@ -21,8 +21,8 @@
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
     <configurationType implementation="club.hand13.cfg.TomcatConfiguration"/>
-    <programRunner id="Easy Tomcat Runner" implementation="com.hand13.runner.EasyTomcatRunner" order="first"/>
-    <programRunner id="Easy Tomcat Debugger" implementation="com.hand13.runner.EasyTomcatDebugger" order="last"/>
+    <programRunner id="Easy Tomcat Runner" implementation="club.hand13.runner.EasyTomcatRunner" order="first"/>
+    <programRunner id="Easy Tomcat Debugger" implementation="club.hand13.runner.EasyTomcatDebugger" order="last"/>
   </extensions>
 
   <actions>
