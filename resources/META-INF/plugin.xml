@@ -1,0 +1,32 @@
+<idea-plugin>
+  <id>club.hand13.plugin.tomcat</id>
+  <name>Easy Tomcat</name>
+  <version>1.0</version>
+  <vendor email="hand13@qq.com" url="hand13.club">Myself</vendor>
+
+  <description>
+    an used easily tomcat plugin that community could use
+  </description>
+
+
+  <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="201"/>
+
+  <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.lang</depends>
+  <depends>com.intellij.modules.java</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+    <configurationType implementation="club.hand13.cfg.TomcatConfiguration"/>
+    <programRunner id="Easy Tomcat Runner" implementation="com.hand13.runner.EasyTomcatRunner" order="first"/>
+    <programRunner id="Easy Tomcat Debugger" implementation="com.hand13.runner.EasyTomcatDebugger" order="last"/>
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>
