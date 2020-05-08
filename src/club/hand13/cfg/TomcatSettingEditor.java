@@ -1,7 +1,11 @@
 package club.hand13.cfg;
 
+import club.hand13.service.ArtifactService;
+import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.options.SettingsEditor;
+import com.intellij.openapi.project.Project;
+import com.intellij.packaging.impl.run.ArtifactChooser;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -10,6 +14,7 @@ import javax.swing.*;
 public class TomcatSettingEditor extends SettingsEditor<EasyTomcatRunConfiguration> {
 
     private TomcatConfig tomcatConfig;
+    private Project project;
     private JPanel mainPanel;
     private JLabel title;
     private JTextField artifactPath;
@@ -17,10 +22,11 @@ public class TomcatSettingEditor extends SettingsEditor<EasyTomcatRunConfigurati
     private JTextField javaHome;
     private JTextField javaOpts;
     private JTextField debugPort;
-    private JTextField port;
+    private ArtifactChooser artifactChooser;
 
 
-    public TomcatSettingEditor() {
+    public TomcatSettingEditor(Project project) {
+        this.project = project;
         tomcatConfig = new TomcatConfig();
     }
 
@@ -42,8 +48,6 @@ public class TomcatSettingEditor extends SettingsEditor<EasyTomcatRunConfigurati
         tomcatConfig.setTomcatPath(tomcatPath.getText());
         tomcatConfig.setWebappPath(artifactPath.getText());
         tomcatConfig.setJavaHome(javaHome.getText());
-        tomcatConfig.setPort(port.getText());
-        tomcatConfig.setDebugPort(port.getText());
         easyTomcatRunConfiguration.setTomcatConfig(tomcatConfig);
     }
 
@@ -59,8 +63,12 @@ public class TomcatSettingEditor extends SettingsEditor<EasyTomcatRunConfigurati
         this.tomcatPath.setText(tomcatConfig.getTomcatPath());
         this.javaHome.setText(tomcatConfig.getJavaHome());
         this.javaOpts.setText(tomcatConfig.getCatalinaOptions());
-        this.port.setText(tomcatConfig.getPort());
         this.debugPort.setText(tomcatConfig.getDebugPort());
         this.javaOpts.setEditable(false);
+    }
+
+    public void createUIComponents() {
+        ArtifactService as = ArtifactService.getInstance(project);
+        artifactChooser = new ArtifactChooser(as.getArtifactPointers());
     }
 }

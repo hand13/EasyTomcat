@@ -28,7 +28,7 @@ public class EasyTomcatRunConfiguration extends RunConfigurationBase {
     @NotNull
     @Override
     public SettingsEditor<? extends RunConfiguration> getConfigurationEditor() {
-        return new TomcatSettingEditor();
+        return new TomcatSettingEditor(this.getProject());
     }
 
 
